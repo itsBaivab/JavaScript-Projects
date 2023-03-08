@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch text file</title>
+</head>
+<body>
+    <p id="text"></p>
+</body>
+<script>
+    textfile()
+    .catch (Error =>
+    {
+        console.error(error);
+    })
+    .then ( text =>
+    {
+        document.getElementById("text").innerText = text;
+        console.log("Here is your text file");
+    })
+    
+    async function textfile()
+    {
+        const text = await fetch('t.txt');
+        return await text.text();
+    }
+</script>
+</html>
